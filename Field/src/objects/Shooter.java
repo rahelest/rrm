@@ -12,7 +12,9 @@ public class Shooter extends Mover {
 	
 
 	public void shoot() {
-		missiles.add(new Missile(this, x + sizeX / 2, y - 1));
+		Missile m = new Missile(this, x + width / 2 - 2, y - 1);
+		missiles.add(m);
+		new Thread(m).start();
 		
 	}
 	

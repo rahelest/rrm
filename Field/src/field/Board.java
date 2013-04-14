@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import objects.Block;
+import objects.BlockHolder;
 import objects.Missile;
 import objects.Mover;
 import objects.Shooter;
@@ -31,18 +33,25 @@ public class Board extends JPanel implements ActionListener {
 	
 	public void paint(Graphics g) {
 		super.paint(g);
+		
+		g.setColor(Color.BLACK);
 		drawSquare(g, shooter);
+		
 		ArrayList<Missile> missiles = shooter.getMissiles();
 		g.setColor(Color.RED);
 		for (Missile m : missiles) {
 			drawSquare(g, m);
 		}
 		
+		g.setColor(Color.BLUE);
+		for (Block b : BlockHolder.blocks) {
+			drawSquare(g, b);
+		}
 		
 	}
 
 	private void drawSquare(Graphics g, Mover mover) {
-		g.fillRect(mover.x, mover.y, mover.sizeX, mover.sizeY);
+		g.fillRect(mover.x, mover.y, mover.width, mover.height);
 		
 	}
 

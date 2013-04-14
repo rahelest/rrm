@@ -3,6 +3,7 @@ package field;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import objects.BlockHolder;
 import objects.Shooter;
 
 public class MyKeyListener implements KeyListener {
@@ -33,10 +34,10 @@ public class MyKeyListener implements KeyListener {
 			case KeyEvent.VK_SPACE:
 				shooter.shoot();
 				break;
-		}
-		
-		System.out.println(keyCode);
-		
+			case KeyEvent.VK_ENTER:
+				BlockHolder.newRandomBlock();
+				break;
+		}		
 	}
 
 	@Override

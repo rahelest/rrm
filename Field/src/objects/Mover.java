@@ -1,27 +1,24 @@
 package objects;
 
+import java.awt.Rectangle;
+
 import field.CollisionChecker;
 
-public class Mover {
-
-	public int x;
-	public int y;	
-	public int sizeX;
-	public int sizeY;
+public abstract class Mover extends Rectangle {
 	
 	public Mover(int mX, int mY, int sX, int sY) {
 		x = mX;
 		y = mY;
 		
-		sizeX = sX;
-		sizeY = sY;
+		width = sX;
+		height = sY;
 	}
 
 	public void move(int i, int j) {
 		int newX = x + i * 10;
 		int newY = y + j * 10;
 		
-		if (!CollisionChecker.collision(newX, newY, sizeX, sizeY)) {
+		if (!CollisionChecker.wallCollision(this, newX, newY)) {
 			x = newX;
 			y = newY;
 		}
@@ -29,6 +26,8 @@ public class Mover {
 		System.out.println(x + " " + y);
 		
 	}
+
+	public void damage(Missile missile) {}
 
 
 }
